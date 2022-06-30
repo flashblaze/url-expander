@@ -1,14 +1,10 @@
-interface ArrowProps {
-  size?: string;
-  strokeColor?: string;
-  customClass?: string;
-}
+import IconInterface from "./iconInterface";
 
 const ArrowIcon = ({
   size = "24",
   strokeColor = "currentColor",
   customClass = "",
-}: ArrowProps) => {
+}: IconInterface) => {
   return (
     <svg
       viewBox="0 0 24 24"

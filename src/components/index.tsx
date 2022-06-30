@@ -1,6 +1,8 @@
+import { Suspense, lazy } from "preact/compat";
 import { useState, useCallback } from "preact/hooks";
 import ArrowIcon from "./Icons/ArrowIcon";
 import ExternalLinkIcon from "./Icons/ExternalLinkIcon";
+import Toast from "./Toast";
 
 interface Response {
   message: string;
@@ -12,6 +14,7 @@ const CF_URL = "https://urlexpander.flashblaze.workers.dev/";
 const Index = () => {
   const [url, setUrl] = useState<string>("");
   const [fetchedUrl, setFetchedUrl] = useState<string | null>("");
+  const [error, setError] = useState<string>("");
 
   const onSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ const Index = () => {
       }).then((res) => res.json());
       setFetchedUrl(res.url);
     } catch (err) {
-      console.error(err);
+      setError(err?.message || "An unexpected error occurred");
     }
   };
 
@@ -31,18 +34,17 @@ const Index = () => {
   };
 
   return (
-    <div>
+    <div class="px-4">
       <h1 class="font-sans font-medium text-center text-4xl text-white mt-16">
         expander
       </h1>
-      <div class="grid grid-cols-3">
+      <div class="grid lg:grid-cols-3">
         <div />
         <div>
           <form onSubmit={onSubmit} class="relative mt-8">
             <input
               value={url}
               type="text"
-              autoComplete="off"
               className="pl-3 pr-9 py-1 text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded focus:text-gray-700 w-full"
               placeholder="Enter shortened URL"
               onInput={onChange}
@@ -59,9 +61,15 @@ const Index = () => {
           {fetchedUrl && (
             <>
               <hr class="mt-6 bg-white" />
-              <div class="flex mt-6 bg-neutral-900 text-white p-4 rounded w-full justify-between">
-                <span>{fetchedUrl}</span>
-                <a href={fetchedUrl} target="_blank">
+              <div class="grid grid-cols-2 xs:grid-cols-12 xs:gap-4 mt-6 bg-neutral-900 text-white p-4 rounded w-full whitespace-pre-wrap">
+                <span class="col-span-2 xs:col-span-10 break-all">
+                  {fetchedUrl}
+                </span>
+                <a
+                  class="col-span-2 xs:col-span-2"
+                  href={fetchedUrl}
+                  target="_blank"
+                >
                   <ExternalLinkIcon customClass="text-teal-500" />
                 </a>
               </div>
@@ -70,6 +78,7 @@ const Index = () => {
         </div>
         <div />
       </div>
+      {error.length && <Toast error={error} setError={setError} />}
     </div>
   );
 };

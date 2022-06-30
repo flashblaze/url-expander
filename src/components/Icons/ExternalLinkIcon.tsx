@@ -1,14 +1,10 @@
-interface ExternalLinkProps {
-  size?: string;
-  strokeColor?: string;
-  customClass?: string;
-}
+import IconInterface from "./IconInterface";
 
 const ExternalLinkIcon = ({
   size = "24",
   strokeColor = "currentColor",
   customClass = "",
-}: ExternalLinkProps) => {
+}: IconInterface) => {
   return (
     <svg
       viewBox="0 0 24 24"

@@ -3,12 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/preact': ^0.2.0
   '@astrojs/tailwind': ^0.2.1
+  '@snackbar/core': ^1.7.0
   astro: ^1.0.0-beta.56
   preact: ^10.6.5
 
 devDependencies:
   '@astrojs/preact': 0.2.0_preact@10.8.2
   '@astrojs/tailwind': 0.2.1
+  '@snackbar/core': 1.7.0
   astro: 1.0.0-beta.56
   preact: 10.8.2
 
@@ -492,6 +494,10 @@ packages:
     dependencies:
       '@proload/core': 0.3.2
       tsm: 2.2.1
+    dev: true
+
+  /@snackbar/core/1.7.0:
+    resolution: {integrity: sha512-CxBEpC/boiGc0PGASQSYU4YmPFkyBhki8n2uJad593VlHcISJjgMMoD1Kk/sdqkEYxKF9zx64aY5F/fP1VfCjg==}
     dev: true
 
   /@types/acorn/4.0.6:
