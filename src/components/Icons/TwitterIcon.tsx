@@ -1,4 +1,5 @@
 import IconInterface from "./iconInterface";
+import { h } from "preact";
 
 const TwitterIcon = ({
   size = "24",

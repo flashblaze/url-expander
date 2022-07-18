@@ -1,8 +1,7 @@
-import { Suspense, lazy } from "preact/compat";
-import { useState, useCallback } from "preact/hooks";
+import { useState } from "preact/hooks";
+import toast, { Toaster } from "react-hot-toast";
 import ArrowIcon from "./Icons/ArrowIcon";
 import ExternalLinkIcon from "./Icons/ExternalLinkIcon";
-import Toast from "./Toast";
 
 interface Response {
   message: string;
@@ -14,7 +13,6 @@ const CF_URL = "https://urlexpander.flashblaze.workers.dev/";
 const Index = () => {
   const [url, setUrl] = useState<string>("");
   const [fetchedUrl, setFetchedUrl] = useState<string | null>("");
-  const [error, setError] = useState<string>("");
 
   const onSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -24,7 +22,7 @@ const Index = () => {
       }).then((res) => res.json());
       setFetchedUrl(res.url);
     } catch (err) {
-      setError(err?.message || "An unexpected error occurred");
+      toast.error(err.message);
     }
   };
 
@@ -78,7 +76,7 @@ const Index = () => {
         </div>
         <div />
       </div>
-      {error.length && <Toast error={error} setError={setError} />}
+      <Toaster toastOptions={{ duration: 3000 }} />
     </div>
   );
 };

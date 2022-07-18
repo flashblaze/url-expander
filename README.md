@@ -14,3 +14,5 @@ Enter shortened URL and get the original URL
 ## Background:
 
 I've started learning [TypeScript](https://www.typescriptlang.org/) and thought I might as well try it in a new project with some new stuff such as Astro as I'm also thinking of re-building my site using these technologies.
+
+### PS: I had to use `import {h} from 'preact'` as otherwise Astro was complaining that it was not getting the renderer
