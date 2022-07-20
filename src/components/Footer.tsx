@@ -1,6 +1,5 @@
 import GitHubIcon from "./Icons/GitHubIcon";
 import TwitterIcon from "./Icons/TwitterIcon";
-import { h } from "preact";
 
 const Footer = () => {
   return (

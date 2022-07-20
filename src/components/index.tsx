@@ -14,7 +14,7 @@ const Index = () => {
   const [url, setUrl] = useState<string>("");
   const [fetchedUrl, setFetchedUrl] = useState<string | null>("");
 
-  const onSubmit = async (e: SubmitEvent) => {
+  const onSubmit = async (e: Event) => {
     e.preventDefault();
     try {
       const res: Response = await fetch(`${CF_URL}?search=${url}`, {
@@ -22,7 +22,10 @@ const Index = () => {
       }).then((res) => res.json());
       setFetchedUrl(res.url);
     } catch (err) {
-      toast.error(err.message);
+      // https://kentcdodds.com/blog/get-a-catch-block-error-message-with-typescript
+      let message = "Unknown error";
+      if (err instanceof Error) message = err.message;
+      toast.error(message);
     }
   };
 
@@ -60,11 +63,11 @@ const Index = () => {
             <>
               <hr class="mt-6 bg-white" />
               <div class="grid grid-cols-2 xs:grid-cols-12 xs:gap-4 mt-6 bg-neutral-900 text-white p-4 rounded w-full whitespace-pre-wrap">
-                <span class="col-span-2 xs:col-span-10 break-all">
+                <span class="col-span-2 xs:col-span-11 break-all">
                   {fetchedUrl}
                 </span>
                 <a
-                  class="col-span-2 xs:col-span-2"
+                  class="col-span-2 xs:col-span-1"
                   href={fetchedUrl}
                   target="_blank"
                 >

@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@astrojs/preact": "^0.5.1",
-    "@astrojs/react": "^0.4.1",
-    "@astrojs/tailwind": "^0.2.4",
-    "astro": "^1.0.0-beta.72",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@preact/preset-vite": "^2.3.0",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.1"
   },
   "dependencies": {
     "preact": "^10.10.0",

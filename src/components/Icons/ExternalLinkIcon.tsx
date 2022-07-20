@@ -1,5 +1,4 @@
 import IconInterface from "./IconInterface";
-import { h } from "preact";
 
 const ExternalLinkIcon = ({
   size = "24",

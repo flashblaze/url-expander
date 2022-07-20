@@ -1,5 +1,4 @@
-import IconInterface from "./iconInterface";
-import { h } from "preact";
+import IconInterface from "./IconInterface";
 
 const ArrowIcon = ({
   size = "24",
