@@ -38,7 +38,7 @@ export default {
     return new Response(JSON.stringify({ message: "OK", url }), {
       headers: {
         "content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://expand.flashblaze.xyz",
       },
     });
   },
